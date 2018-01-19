@@ -11,6 +11,7 @@ end_date: end date of transactions
 from requests import post
 from hashlib import sha1, md5
 from string import Template
+import datetime
 
 
 class PrivatBank:
@@ -50,8 +51,9 @@ class GetTX(PrivatBank):
     password = ''
     merchant_id = ''
     card_number = ''
-    start_date = ''
-    end_date = ''
+    now = datetime.datetime.now()
+    end_date = now.strftime('%d.%m.%Y')
+    start_date = (now.date() - datetime.timedelta(1)).strftime('%d.%m.%Y')
 
     def gen_xml(self):
         """ generate signature """
