@@ -13,4 +13,3 @@ Example:
 from pyprivat24 import pyprivat24
 privat = pyprivat24.PrivatBank(merchant_id, merchant_password, card_number)
 tx_list = privat.txget('24.11.2019', '25.11.2019')
-
