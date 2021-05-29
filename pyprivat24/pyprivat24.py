@@ -47,7 +47,7 @@ class PrivatBank():
         """ generate XML based on signature + data """
         data = data.substitute(
             start_date=start_date, end_date=end_date, card_number=self.card_number)
-        signature = sha1(md5(data + self.password).hexdigest()).hexdigest()
+        signature = sha1(md5(str(data + self.password).encode('utf-8')).hexdigest().encode('utf-8')).hexdigest()
         xml_data = self.xml.substitute(
             merchant_id=self.merchant_id, signature=signature, data=data)
         return xml_data
